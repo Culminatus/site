@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hizmetlerimiz - Mega Yapı</title>
+<meta name="description" content="Mega Yapı - Mühendislik, Kaliteli Malzeme, Zamanında Teslim, Müşteri Memnuniyeti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body{padding-top:64px;}
+  .hero-page{background:linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);color:#fff;padding:80px 0;text-align:center;}
+  .hero-page h1{font-size:clamp(36px,5vw,56px);margin-bottom:16px;}
+  .hero-page p{font-size:18px;color:rgba(255,255,255,0.8);}
+  
+  section{padding:80px 0;}
+  section:nth-child(odd){background:var(--white);}
+  section:nth-child(even){background:var(--paper);}
+  
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);margin-top:40px;}
+  
+  .service-card{
+    background:var(--white);padding:40px 30px;display:flex;flex-direction:column;gap:20px;
+  }
+  
+  .service-icon{
+    width:60px;height:60px;border:2px solid var(--red);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  
+  .service-icon svg{width:30px;height:30px;color:var(--red);}
+  
+  .service-card h3{font-size:20px;margin:0;font-weight:600;color:var(--ink);}
+  .service-card p{font-size:14.5px;color:var(--steel);line-height:1.7;margin:0;}
+  
+  .service-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;margin-top:50px;}
+  
+  .detail-item{padding:30px;background:rgba(200,105,60,0.05);border-radius:8px;border-left:4px solid var(--red);}
+  .detail-item h4{font-size:18px;color:var(--ink);margin-bottom:12px;}
+  .detail-item p{font-size:14px;color:var(--steel);line-height:1.7;}
+  
+  @media (max-width:1024px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  
+  @media (max-width:768px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="mark">M</div>
+      <div class="word">MEGA YAPI<span>1989'DAN BERİ</span></div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="kurumsal.html">Kurumsal</a></li>
+        <li><a href="projeler.html">Projeler</a></li>
+        <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <a class="head-phone" href="tel:+902125739060">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0212 573 90 60
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="hero-page">
+  <div class="wrap">
+    <h1>Hizmetlerimiz</h1>
+    <p>Mühendislikten teslimata bütün süreç</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M7 7l2 2M17 7l-2 2M7 17l2-2M17 17l-2-2"/></svg></div>
+        <h3>Mühendislik ve Tecrübe</h3>
+        <p>37 yıllık kadromuzla projelerimizi en doğru şekilde planlıyor ve uyguluyoruz.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l4-4M3 21v-5h5"/><path d="M12 3l4 4-9 9-4-4 9-9z"/></svg></div>
+        <h3>Kaliteli Malzeme</h3>
+        <p>Uzun ömürlü ve dayanıklı yapılar için yüksek kaliteli malzeme kullanıyoruz.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <h3>Zamanında Teslim</h3>
+        <p>Projelerimizi planlanan sürede tamamlayarak sözümüzü tutuyoruz.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 11l3 3 5-5"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Müşteri Memnuniyeti</h3>
+        <p>Satış sonrasında da yanınızda olarak memnuniyeti ön planda tutuyoruz.</p>
+      </div>
+    </div>
+    
+    <div style="margin-top:80px;">
+      <h2 style="margin-bottom:40px;">Hizmet Detayları</h2>
+      <div class="service-details">
+        <div class="detail-item">
+          <h4>🏗️ Proje Yönetimi</h4>
+          <p>Şantiyeden ofise kadar her aşamada profesyonel yönetim ve denetim.</p>
+        </div>
+        <div class="detail-item">
+          <h4>📐 Mimari Tasarım</h4>
+          <p>Günümüz standartlarına uygun, estetik ve işlevsel tasarımlar.</p>
+        </div>
+        <div class="detail-item">
+          <h4>🔧 Teknik Destek</h4>
+          <p>Müteahhit lisanslı mühendisler tarafından hassas uygulama kontrolü.</p>
+        </div>
+        <div class="detail-item">
+          <h4>✅ Kalite Güvencesi</h4>
+          <p>Her aşamada bağımsız denetim ve kalite kontrol prosesleri.</p>
+        </div>
+        <div class="detail-item">
+          <h4>📋 İşlemler</h4>
+          <p>Tüm yasal ve idari işlemlerde tam destek ve rehberlik.</p>
+        </div>
+        <div class="detail-item">
+          <h4>🤝 Sonrasındaki Destek</h4>
+          <p>Teslim sonrasında sorunlarınızda hızlı ve etkili çözüm.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <div class="mark">M</div>
+          <div class="word" style="color:#fff;">MEGA YAPI<span>1989'DAN BERİ</span></div>
+        </a>
+        <p>1989 yılından bu yana kalite ve güven anlayışıyla Yeşilköy–Bakırköy bölgesinde yaşam alanları inşa ediyoruz.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/megayapi" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+          <a href="https://www.facebook.com/megayapi" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 12h5"/></svg></a>
+          <a href="https://www.linkedin.com/company/megayapi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v6M7 7v.01M11 10v6M17 10v6M7 17h4M17 7v3a2 2 0 0 1-4 0v-3"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Hızlı Linkler</h4>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="kurumsal.html">Kurumsal</a></li>
+          <li><a href="projeler.html">Projeler</a></li>
+          <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hizmetlerimiz</h4>
+        <ul>
+          <li><a href="#">Konut Projeleri</a></li>
+          <li><a href="#">Ticari Yapılar</a></li>
+          <li><a href="#">Kentsel Dönüşüm</a></li>
+          <li><a href="#">Anahtar Teslim Proje</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Yeşilköy Mah. Demiryolu Cad. No:32 Bakırköy, İstanbul</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+902125739060">0212 573 90 60</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:info@megayapi.net">info@megayapi.net</a></li>
+        </ul>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=Ye%C5%9Filk%C3%B6y+Mah.+Demiryolu+Cad.+No:32+Bak%C4%B1rk%C3%B6y+%C4%B0stanbul&output=embed" loading="lazy" title="Mega Yapı konum haritası"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mega Yapı. Tüm hakları saklıdır.</span>
+      <span style="display:flex;gap:18px;"><a href="#">KVKK</a><a href="#">Gizlilik Politikası</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

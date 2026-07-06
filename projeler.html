@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeler - Mega Yapı</title>
+<meta name="description" content="Mega Yapı - Tamamlanmış ve devam eden tüm projelerimiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body{padding-top:64px;}
+  .hero-page{background:linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);color:#fff;padding:80px 0;text-align:center;}
+  .hero-page h1{font-size:clamp(36px,5vw,56px);margin-bottom:16px;}
+  .hero-page p{font-size:18px;color:rgba(255,255,255,0.8);}
+  
+  section{padding:80px 0;background:var(--paper);}
+  
+  .projects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);margin-top:40px;}
+  
+  .project-card{
+    position:relative;background:var(--ink);aspect-ratio:3/4;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    cursor:pointer;
+  }
+  
+  .project-card img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  
+  .project-card::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(15,17,21,0) 40%, rgba(10,11,14,0.94) 100%);
+    z-index:1;
+  }
+  
+  .project-card:hover img{transform:scale(1.07);}
+  
+  .project-body{position:relative;z-index:2;padding:22px;color:#fff;}
+  .project-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);
+    letter-spacing:0.08em;margin-bottom:8px;display:block;
+  }
+  
+  .project-body h3{font-size:19px;color:#fff;margin-bottom:4px;font-weight:600;}
+  .project-body .loc{font-size:12px;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px;}
+  
+  .project-link{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;
+    display:inline-flex;align-items:center;gap:6px;letter-spacing:0.05em;
+    border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:4px;
+  }
+  
+  .project-link svg{width:11px;height:11px;}
+  
+  .no-projects{
+    text-align:center;
+    padding:60px 20px;
+    color:var(--steel);
+  }
+  
+  .no-projects p{
+    font-size:16px;
+    margin-bottom:20px;
+  }
+  
+  @media (max-width:1024px){
+    .projects-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  
+  @media (max-width:768px){
+    .projects-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  
+  @media (max-width:560px){
+    .projects-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="mark">M</div>
+      <div class="word">MEGA YAPI<span>1989'DAN BERİ</span></div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="kurumsal.html">Kurumsal</a></li>
+        <li><a href="projeler.html">Projeler</a></li>
+        <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <a class="head-phone" href="tel:+902125739060">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0212 573 90 60
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="hero-page">
+  <div class="wrap">
+    <h1>Projelerimiz</h1>
+    <p>Yaşama değer katan yapılar</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="projects-grid" id="projectsGrid">
+      <div class="no-projects" style="grid-column:1/-1;">
+        <p>Henüz proje eklenmemiştir</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <div class="mark">M</div>
+          <div class="word" style="color:#fff;">MEGA YAPI<span>1989'DAN BERİ</span></div>
+        </a>
+        <p>1989 yılından bu yana kalite ve güven anlayışıyla Yeşilköy–Bakırköy bölgesinde yaşam alanları inşa ediyoruz.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/megayapi" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+          <a href="https://www.facebook.com/megayapi" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 12h5"/></svg></a>
+          <a href="https://www.linkedin.com/company/megayapi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v6M7 7v.01M11 10v6M17 10v6M7 17h4M17 7v3a2 2 0 0 1-4 0v-3"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Hızlı Linkler</h4>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="kurumsal.html">Kurumsal</a></li>
+          <li><a href="projeler.html">Projeler</a></li>
+          <li><a href="hizmetler.html">Hizmetlerimiz</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hizmetlerimiz</h4>
+        <ul>
+          <li><a href="#">Konut Projeleri</a></li>
+          <li><a href="#">Ticari Yapılar</a></li>
+          <li><a href="#">Kentsel Dönüşüm</a></li>
+          <li><a href="#">Anahtar Teslim Proje</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Yeşilköy Mah. Demiryolu Cad. No:32 Bakırköy, İstanbul</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+902125739060">0212 573 90 60</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:info@megayapi.net">info@megayapi.net</a></li>
+        </ul>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=Ye%C5%9Filk%C3%B6y+Mah.+Demiryolu+Cad.+No:32+Bak%C4%B1rk%C3%B6y+%C4%B0stanbul&output=embed" loading="lazy" title="Mega Yapı konum haritası"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mega Yapı. Tüm hakları saklıdır.</span>
+      <span style="display:flex;gap:18px;"><a href="#">KVKK</a><a href="#">Gizlilik Politikası</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>
+  function renderProjectsPage() {
+    const projects = getProjects();
+    const grid = document.getElementById('projectsGrid');
+    
+    if (projects.length === 0) {
+      grid.innerHTML = '<div class="no-projects" style="grid-column:1/-1;"><p>Henüz proje eklenmemiştir</p></div>';
+      return;
+    }
+    
+    grid.innerHTML = projects.map(p => `
+      <a href="proje-detay.html?id=${p.id}" class="project-card">
+        <img src="${p.image}" alt="${p.name}">
+        <div class="project-body">
+          <span class="project-tag">${p.year}</span>
+          <h3>${p.name}</h3>
+          <div class="loc">${p.address}</div>
+          <span class="project-link">Detayları İncele
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+    `).join('');
+  }
+  
+  document.addEventListener('DOMContentLoaded', renderProjectsPage);
+</script>
+</body>
+</html>
