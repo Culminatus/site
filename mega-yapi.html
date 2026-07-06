@@ -4,6 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mega Yapı — 1989'dan Bugüne Güven, Kalite, Gelecek</title>
+<meta name="description" content="1989'dan bu yana Yeşilköy–Bakırköy bölgesinde 37 yıllık deneyimle konut, işyeri ve plaza projeleri üretiyoruz. Kalite, güven ve şeffaf süreç yönetimi ile sağlam yapılar inşa ediyoruz.">
+<meta property="og:title" content="Mega Yapı — 1989'dan Bugüne Güven, Kalite, Gelecek">
+<meta property="og:description" content="37 yıllık deneyimle, Yeşilköy–Bakırköy bölgesinde yaşam alanları inşa ediyoruz.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://megayapi.net/images/slider/Hrt2.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mega Yapı — 1989'dan Bugüne Güven, Kalite, Gelecek">
+<meta name="twitter:description" content="37 yıllık deneyimle, Yeşilköy–Bakırköy bölgesinde yaşam alanları inşa ediyoruz.">
+<meta name="twitter:image" content="https://megayapi.net/images/slider/Hrt2.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Mega Yapı",
+  "description": "İnşaat ve gayrimenkul geliştirme şirketi",
+  "image": "https://megayapi.net/images/slider/Hrt2.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Yeşilköy Mah. Demiryolu Cad. No:32",
+    "addressLocality": "Bakırköy",
+    "addressRegion": "İstanbul",
+    "postalCode": "34570",
+    "addressCountry": "TR"
+  },
+  "telephone": "+902125739060",
+  "email": "info@megayapi.net",
+  "founded": "1989",
+  "foundingDate": "1989",
+  "sameAs": [
+    "https://www.instagram.com/megayapi",
+    "https://www.facebook.com/megayapi",
+    "https://www.linkedin.com/company/megayapi"
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -29,6 +66,7 @@
   }
   img{display:block;max-width:100%;}
   a{color:inherit;text-decoration:none;}
+  a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   ul{list-style:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
   .eyebrow{
@@ -54,6 +92,7 @@
     padding:16px 26px;border:1px solid transparent;cursor:pointer;
     transition:all .25s ease;
   }
+  .btn:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   .btn-primary{background:var(--red);color:var(--white);}
   .btn-primary:hover{background:var(--red-deep);}
   .btn-ghost{border-color:rgba(255,255,255,0.35);color:var(--white);}
@@ -95,8 +134,24 @@
   .head-actions{display:flex;align-items:center;gap:22px;}
   .head-phone{display:flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:500;}
   .head-phone svg{width:16px;height:16px;color:var(--red);}
-  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
-  .burger span{width:24px;height:2px;background:#fff;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+  .burger:focus-visible{outline:2px solid rgba(255,255,255,0.5);border-radius:4px;}
+  .burger span{width:24px;height:2px;background:#fff;transition:all .3s ease;}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(10px, 10px);}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(7px, -7px);}
+
+  /* Mobile menu */
+  nav.menu-open{
+    display:flex !important;
+    position:fixed;top:64px;left:0;right:0;
+    background:rgba(20,23,28,0.98);
+    flex-direction:column;
+    padding:24px 32px;
+    gap:18px;
+    z-index:99;
+  }
+  nav.menu-open ul{flex-direction:column;gap:20px;}
 
   /* ===== HERO ===== */
   .hero{
@@ -260,7 +315,9 @@
   .socials a{
     width:34px;height:34px;border:1px solid rgba(255,255,255,0.15);
     display:flex;align-items:center;justify-content:center;
+    transition:all .25s ease;
   }
+  .socials a:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
   .socials svg{width:15px;height:15px;}
   .footer-col h4{
     font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;
@@ -280,7 +337,8 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width:900px){
-    nav, .head-phone{display:none;}
+    nav{display:none;}
+    .head-phone{display:none;}
     .burger{display:flex;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stat:nth-child(2){border-right:none;}
@@ -303,7 +361,7 @@
     .cta-inner{flex-direction:column;align-items:flex-start;}
   }
   @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
+    *{transition:none !important;animation:none !important;}
   }
 </style>
 </head>
@@ -326,11 +384,11 @@
     </nav>
     <div class="head-actions">
       <a class="head-phone" href="tel:+902125739060">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         0212 573 90 60
       </a>
       <a class="btn btn-primary" href="#iletisim">Teklif Al</a>
-      <button class="burger" id="burgerBtn" aria-label="Menü"><span></span><span></span><span></span></button>
+      <button class="burger" id="burgerBtn" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -347,7 +405,7 @@
     <div class="hero-content">
       <div class="eyebrow">Güven · Kalite · Gelecek</div>
       <h1>37 yıllık deneyim,<br><em>sağlam</em> yapılar.</h1>
-      <p class="lead">1989'dan bugüne Yeşilköy–Bakırköy hattında, bölge dokusuna saygılı ve sağlam mühendislikle inşa ediyoruz. Her projede kaliteli malzeme ve şeffaf süreç önceliğimiz.</p>
+      <p class="lead">1989'dan bugüne Yeşilköy–Bakırköy hattında, bölge dokusuna saygılı ve sağlam mühendislikle inşa ediyoruz. Her projede kaliteli malzeme ve şeffaf süreç önceliğimizdir.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#projeler">Projeleri İncele
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -399,7 +457,7 @@
     <div class="projects-grid">
 
       <a class="project-card" href="https://megayapi.net/proje_side-apt.-(yeni-proje).php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg" alt="Side Apt.">
+        <img src="https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg" alt="Side Apt. - Bakırköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Yeni Proje</span>
           <h3>Side Apt.</h3>
@@ -411,7 +469,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_cicek-apt..php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/6846e7e193f50.jpg" alt="Çiçek Apt.">
+        <img src="https://megayapi.net/admin/project_image/6846e7e193f50.jpg" alt="Çiçek Apt. - Yeşilköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Konut</span>
           <h3>Çiçek Apt.</h3>
@@ -423,7 +481,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_deniz-apt..php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/69143a05aa714.jpg" alt="Deniz Apt.">
+        <img src="https://megayapi.net/admin/project_image/69143a05aa714.jpg" alt="Deniz Apt. - Yeşilköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Konut</span>
           <h3>Deniz Apt.</h3>
@@ -435,7 +493,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_yesilkoy-park-sitesi.php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/6846ebd009a4a.jpg" alt="Yeşilköy Park Sitesi">
+        <img src="https://megayapi.net/admin/project_image/6846ebd009a4a.jpg" alt="Yeşilköy Park Sitesi - Yeşilköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Site</span>
           <h3>Yeşilköy Park Sitesi</h3>
@@ -447,7 +505,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_alinn-club---sarigerme.php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/68ad6287a515e.jpg" alt="Alinn Club Sarıgerme">
+        <img src="https://megayapi.net/admin/project_image/68ad6287a515e.jpg" alt="Alinn Club Sarıgerme - Sarıgerme / Muğla">
         <div class="project-body">
           <span class="project-tag">Tatil Sitesi</span>
           <h3>Alinn Club Sarıgerme</h3>
@@ -459,7 +517,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_ozlem-apt..php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/68c0207f9e22c.jpg" alt="Özlem Apt.">
+        <img src="https://megayapi.net/admin/project_image/68c0207f9e22c.jpg" alt="Özlem Apt. - Yeşilköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Konut</span>
           <h3>Özlem Apt.</h3>
@@ -471,7 +529,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_dogan-apt..php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/68628615b0d62.jpg" alt="Doğan Apt.">
+        <img src="https://megayapi.net/admin/project_image/68628615b0d62.jpg" alt="Doğan Apt. - Yeşilköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Konut</span>
           <h3>Doğan Apt.</h3>
@@ -483,7 +541,7 @@
       </a>
 
       <a class="project-card" href="https://megayapi.net/proje_atali-apt..php" target="_blank" rel="noopener">
-        <img src="https://megayapi.net/admin/project_image/68e384b23ff10.jpg" alt="Atalı Apt.">
+        <img src="https://megayapi.net/admin/project_image/68e384b23ff10.jpg" alt="Atalı Apt. - Yeşilköy / İstanbul">
         <div class="project-body">
           <span class="project-tag">Konut</span>
           <h3>Atalı Apt.</h3>
@@ -502,13 +560,13 @@
 <section class="about" id="kurumsal">
   <div class="wrap about-grid">
     <div class="about-media">
-      <img src="https://megayapi.net/images/headers/kurumsal.jpg" alt="Mega Yapı kurumsal">
+      <img src="https://megayapi.net/images/headers/kurumsal.jpg" alt="Mega Yapı kurumsal fotoğrafı">
       <div class="frame"></div>
     </div>
     <div class="about-text">
       <div class="eyebrow">Mega Yapı</div>
       <h2 style="font-size:clamp(26px,3vw,36px);margin-bottom:20px;">Geleceği inşa ediyoruz</h2>
-      <p>1989'dan bu yana Yeşilköy–Yeşilyurt hattında konut, işyeri ve plaza projeleri üretiyoruz. Her projede bölgenin dokusuna uygun, estetik ve dayanıklı bir mimari anlayışı benimsiyoruz.</p>
+      <p>1989'dan bu yana Yeşilköy–Yeşilyurt hattında konut, işyeri ve plaza projeleri üretiyoruz. Her projede bölgenin dokusuna uygun, estetik ve dayanıklı bir mimari anlayışı benimsiyor, mühendislik ve insan faktörünü ön planda tutuyoruz.</p>
       <p>Amacımız; insana ve doğaya saygılı, güncel mühendislik teknikleriyle inşa edilmiş, gelecek kuşaklara da hizmet edecek sağlam yaşam alanları sunmak.</p>
       <ul class="check-list">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Yüksek kalite standartları</li>
@@ -536,7 +594,7 @@
   <div class="wrap" style="padding:0;">
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M7 7l2 2M17 7l-2 2"/></svg></div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M7 7l2 2M17 7l-2 2M7 17l2-2M17 17l-2-2"/></svg></div>
         <h3>Mühendislik ve Tecrübe</h3>
         <p>37 yıllık kadromuzla projelerimizi en doğru şekilde planlıyor ve uyguluyoruz.</p>
       </div>
@@ -568,11 +626,11 @@
     </div>
     <div class="cta-actions">
       <a class="btn btn-primary" href="tel:+902125739060">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         0212 573 90 60
       </a>
       <a class="btn btn-ghost" href="https://wa.me/902125739060" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 8.5-8.5 8.38 8.38 0 0 1 8.5 8.5Z"/></svg>
         WhatsApp
       </a>
     </div>
@@ -590,9 +648,9 @@
         </a>
         <p>1989 yılından bu yana kalite ve güven anlayışıyla Yeşilköy–Bakırköy bölgesinde yaşam alanları inşa ediyoruz.</p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 12h5"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v6M7 7v.01M12 16v-3.5a1.5 1.5 0 0 1 3 0V16M12 12.5V16"/></svg></a>
+          <a href="https://www.instagram.com/megayapi" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+          <a href="https://www.facebook.com/megayapi" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 12h5"/></svg></a>
+          <a href="https://www.linkedin.com/company/megayapi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v6M7 7v.01M11 10v6M17 10v6M7 17h4M17 7v3a2 2 0 0 1-4 0v-3"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -617,12 +675,12 @@
       <div class="footer-col">
         <h4>İletişim</h4>
         <ul class="footer-contact">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Yeşilköy Mah. Demiryolu Cad. No:32 D:3, Bakırköy / İstanbul</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>0212 573 90 60</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@megayapi.net</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Yeşilköy Mah. Demiryolu Cad. No:32 Bakırköy, İstanbul</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+902125739060">0212 573 90 60</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:info@megayapi.net">info@megayapi.net</a></li>
         </ul>
         <div class="map-frame">
-          <iframe src="https://www.google.com/maps?q=Ye%C5%9Filk%C3%B6y+Mah.+Demiryolu+Cad.+No:32+Bak%C4%B1rk%C3%B6y+%C4%B0stanbul&output=embed" loading="lazy" title="Mega Yapı konum"></iframe>
+          <iframe src="https://www.google.com/maps?q=Ye%C5%9Filk%C3%B6y+Mah.+Demiryolu+Cad.+No:32+Bak%C4%B1rk%C3%B6y+%C4%B0stanbul&output=embed" loading="lazy" title="Mega Yapı konum haritası"></iframe>
         </div>
       </div>
     </div>
@@ -634,18 +692,49 @@
 </footer>
 
 <script>
+  // Debounced scroll listener for header
+  let scrollTimeout;
   const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
+  
+  function updateHeaderOnScroll() {
     header.classList.toggle('scrolled', window.scrollY > 40);
+  }
+  
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateHeaderOnScroll, 10);
   });
 
+  // Mobile menu toggle with proper state management
   const burger = document.getElementById('burgerBtn');
+  const nav = document.querySelector('nav');
+  
   burger.addEventListener('click', () => {
-    const nav = document.querySelector('nav');
-    const phone = document.querySelector('.head-phone');
-    const isOpen = nav.style.display === 'flex';
-    nav.style.cssText = isOpen ? '' : 'display:flex;position:fixed;top:64px;left:0;right:0;background:rgba(20,23,28,0.98);flex-direction:column;padding:24px 32px;gap:18px;';
-    phone.style.cssText = isOpen ? '' : 'display:flex;';
+    const isOpen = nav.classList.contains('menu-open');
+    
+    if (isOpen) {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    } else {
+      nav.classList.add('menu-open');
+      burger.setAttribute('aria-expanded', 'true');
+    }
+  });
+  
+  // Close mobile menu when a link is clicked
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  // Close mobile menu on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
   });
 </script>
 
