@@ -323,7 +323,7 @@
     return urlParams.get(name);
   }
   
-  function renderProjectDetail() {
+ async function renderProjectDetail() {
     const projectId = getQueryParam('id');
     if (!projectId) {
       document.getElementById('projectContainer').style.display = 'none';
@@ -331,7 +331,7 @@
       return;
     }
     
-    const project = getProjectById(projectId);
+    const project = await getProjectById(projectId);
     if (!project) {
       document.getElementById('projectContainer').style.display = 'none';
       document.getElementById('notFound').style.display = 'block';
