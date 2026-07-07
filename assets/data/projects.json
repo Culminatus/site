@@ -9,6 +9,33 @@
     "image": "https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg"
   },
   {
+    "id": 3,
+    "name": "Side Apt.",
+    "year": 2024,
+    "unitCount": 12,
+    "address": "Bakırköy / İstanbul",
+    "description": "Proje hakkında detaylı açıklama buraya yazılacak.",
+    "image": "https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Side Apt.",
+    "year": 2024,
+    "unitCount": 12,
+    "address": "Bakırköy / İstanbul",
+    "description": "Proje hakkında detaylı açıklama buraya yazılacak.",
+    "image": "https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Side Apt.",
+    "year": 2024,
+    "unitCount": 12,
+    "address": "Bakırköy / İstanbul",
+    "description": "Proje hakkında detaylı açıklama buraya yazılacak.",
+    "image": "https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg"
+  },
+  {
     "id": 2,
     "name": "Çiçek Apt.",
     "year": 2023,
