@@ -1,7 +1,29 @@
 // Mega Yapı - Ana Uygulama Mantığı
 
+// Mega Yapı - Ana Uygulama Mantığı (JSON Fetch Versiyonu)
+
+// JSON dosyasından projeleri asenkron olarak çek
+async function getProjects() {
+  try {
+    const response = await fetch('assets/data/projects.json');
+    if (!response.ok) {
+      throw new Error('Projeler yüklenemedi');
+    }
+    const projects = await response.json();
+    return projects;
+  } catch (error) {
+    console.error('Hata:', error);
+    return []; // Hata durumunda boş liste dön
+  }
+}
+
+// ID ile proje al (Artık asenkron çalışıyor)
+async function getProjectById(id) {
+  const projects = await getProjects();
+  return projects.find(p => p.id === parseInt(id) || p.id === id);
+}
 // LocalStorage'dan projeleri al
-function getProjects() {
+/*function getProjects() {
   const projects = localStorage.getItem('megayapi_projects');
   return projects ? JSON.parse(projects) : [];
 }
@@ -19,7 +41,7 @@ function addProject(project) {
   projects.push(project);
   saveProjects(projects);
   return project;
-}
+}*/
 
 // Proje güncelle
 function updateProject(id, updatedProject) {
@@ -34,12 +56,12 @@ function deleteProject(id) {
   projects = projects.filter(p => p.id !== id);
   saveProjects(projects);
 }
-
+/*
 // ID ile proje al
 function getProjectById(id) {
   const projects = getProjects();
   return projects.find(p => p.id === parseInt(id));
-}
+}*/
 
 // Header scroll efekti
 function initializeHeader() {
