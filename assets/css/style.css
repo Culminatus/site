@@ -192,6 +192,6 @@ footer{background:var(--ink-2);color:rgba(255,255,255,0.7);padding:70px 0 0;}
   *{transition:none !important;animation:none !important;}
 }
 .logo-img{
-    height:48px;
+    height:36px;
     width:auto;
 }
