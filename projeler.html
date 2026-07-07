@@ -169,8 +169,8 @@
 
 <script src="assets/js/app.js"></script>
 <script>
-  function renderProjectsPage() {
-    const projects = getProjects();
+  async function renderProjectsPage() {
+    const projects = await getProjects();
     const grid = document.getElementById('projectsGrid');
     
     if (projects.length === 0) {
