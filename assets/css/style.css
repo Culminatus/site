@@ -191,3 +191,7 @@ footer{background:var(--ink-2);color:rgba(255,255,255,0.7);padding:70px 0 0;}
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important;}
 }
+.logo-img{
+    height:38px;
+    width:auto;
+}
