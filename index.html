@@ -425,8 +425,8 @@
 
 <script src="assets/js/app.js"></script>
 <script>
-  function renderHomeProjects() {
-    const projects = getProjects();
+  async function renderHomeProjects() {
+    const projects = await getProjects();
     const grid = document.getElementById('homeProjectsGrid');
     
     if (projects.length === 0) {
