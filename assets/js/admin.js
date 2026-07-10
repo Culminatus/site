@@ -74,6 +74,16 @@ function resetProjectForm() {
   document.getElementById('currentProjectId').value = '';
   document.getElementById('imagePreview').innerHTML = '';
 }
+async function processGallery(files) {
+  const gallery = [];
+  for (let file of files) {
+    const base64 = await new Promise((resolve) => {
+      compressImage(file, resolve); // Mevcut compressImage fonksiyonunu kullanıyoruz
+    });
+    gallery.push(base64);
+  }
+  return gallery;
+}
 
 // Proje ekle/güncelle
 document.addEventListener('DOMContentLoaded', () => {
@@ -81,9 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (!projectForm) return;
   
-  projectForm.addEventListener('submit', (e) => {
+  projectForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+  
+  const files = document.getElementById('projectGallery').files;
+  const gallery = await processGallery(files); 
     const currentId = document.getElementById('currentProjectId').value;
     const name = document.getElementById('projectName').value;
     const year = document.getElementById('projectYear').value;
@@ -128,7 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
         year: parseInt(year),
         unitCount: parseInt(unitCount),
         address,
-        description
+        description,
+        gallery: gallery
       };
       updateProject(parseInt(currentId), projectData);
       alert('Proje güncellendi!');
