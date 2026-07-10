@@ -101,53 +101,47 @@ document.addEventListener('DOMContentLoaded', () => {
   projectForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Form verilerini al
-    const currentId = document.getElementById('currentProjectId').value;
+    // 1. Formdan verileri ve dosyaları al
     const name = document.getElementById('projectName').value;
-    const year = document.getElementById('projectYear').value;
-    const unitCount = document.getElementById('projectUnitCount').value;
-    const address = document.getElementById('projectAddress').value;
-    const description = document.getElementById('projectDescription').value;
-    
-    // Fotoğrafları al
-    const imageFile = document.getElementById('projectImage').files[0];
+    const coverFile = document.getElementById('projectImage').files[0];
     const galleryFiles = document.getElementById('projectGallery').files;
-
-    if (!name || !year || !unitCount || !address) {
-      alert('Lütfen tüm alanları doldurunuz!');
-      return;
+    
+    // 2. FormData ile dosyaları hazırla (Dosyayı sunucuya göndermek için)
+    const formData = new FormData();
+    formData.append('projectName', name); 
+    if (coverFile) formData.append('coverImage', coverFile);
+    for (let i = 0; i < galleryFiles.length; i++) {
+        formData.append('gallery[]', galleryFiles[i]);
     }
 
-    // Mevcut projeyi al (güncelleme ise)
-    let existingProject = currentId ? getProjectById(parseInt(currentId)) : null;
+    // 3. Dosyaları PHP'ye gönder (PHP klasörü açıp içine atacak)
+    // Bu kısım için sunucunda 'assets/images/upload.php' olmalı
+    const response = await fetch('assets/images/upload.php', {
+        method: 'POST',
+        body: formData
+    });
+    
+    const result = await response.json(); // PHP bize resim yollarını dönecek
 
-    // Fotoğrafları işle
-    let coverImage = imageFile ? await compressImagePromise(imageFile) : (existingProject ? existingProject.image : null);
-    let gallery = galleryFiles.length > 0 ? await processGallery(galleryFiles) : (existingProject ? existingProject.gallery : []);
-
-    if (!coverImage && !currentId) {
-      alert('Lütfen bir kapak fotoğrafı seçiniz!');
-      return;
-    }
-
+    // 4. Artık Base64 yok, sadece resmin sunucudaki YOLU var
     const projectData = {
-      name,
-      year: parseInt(year),
-      unitCount: parseInt(unitCount),
-      address,
-      description,
-      image: coverImage,
-      gallery: gallery // Galeri buraya eklendi
+        name,
+        year: parseInt(document.getElementById('projectYear').value),
+        unitCount: parseInt(document.getElementById('projectUnitCount').value),
+        address: document.getElementById('projectAddress').value,
+        description: document.getElementById('projectDescription').value,
+        image: result.coverImagePath, // Örn: assets/images/Side Apt/kapak.jpg
+        gallery: result.galleryPaths   // Örn: ["assets/images/Side Apt/1.jpg", ...]
     };
 
-    if (currentId) {
-      updateProject(parseInt(currentId), projectData);
-      alert('Proje güncellendi!');
+    // 5. Kaydet
+    if (document.getElementById('currentProjectId').value) {
+        updateProject(parseInt(document.getElementById('currentProjectId').value), projectData);
     } else {
-      addProject(projectData);
-      alert('Proje eklendi!');
+        addProject(projectData);
     }
     
+    alert('Proje eklendi/güncellendi!');
     renderAdminPanel();
     resetProjectForm();
   });
