@@ -6,6 +6,11 @@
     "unitCount": 12,
     "address": "Yeşilköy, Gazi Evrenos Cd. No:8, 34149 Bakırköy/İstanbul",
     "description": "Proje hakkında detaylı açıklama buraya yazılacak.",
+    "gallery": [
+      "https://megayapi.net/admin/project_image/gallery1.jpg",
+      "https://megayapi.net/admin/project_image/gallery2.jpg",
+      "https://megayapi.net/admin/project_image/gallery3.jpg"
+    ],
     "image": "https://megayapi.net/admin/project_image/68bfe6ad0bc35.jpg"
   },
   {
