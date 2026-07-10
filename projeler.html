@@ -112,6 +112,14 @@
 
 <section>
   <div class="wrap">
+    <div className="p-4">
+      {/* Arama Kutusu */}
+      <input 
+  type="text" 
+  id="searchInput"
+  placeholder="Proje ara..." 
+  style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;"
+/>
     <div class="projects-grid" id="projectsGrid">
       <div class="no-projects" style="grid-column:1/-1;">
         <p>Henüz proje eklenmemiştir</p>
@@ -167,18 +175,18 @@
   </div>
 </footer>
 
-<script src="assets/js/app.js"></script>
-<script>
-  async function renderProjectsPage() {
-    const projects = await getProjects();
+<script src="assets/js/app.js"></script><script>
+  let allProjects = [];
+ 
+  function renderProjects(projectsToRender) {
     const grid = document.getElementById('projectsGrid');
     
-    if (projects.length === 0) {
-      grid.innerHTML = '<div class="no-projects" style="grid-column:1/-1;"><p>Henüz proje eklenmemiştir</p></div>';
+    if (projectsToRender.length === 0) {
+      grid.innerHTML = '<div class="no-projects" style="grid-column:1/-1;"><p>Aranan kriterde proje bulunamadı.</p></div>';
       return;
     }
     
-    grid.innerHTML = projects.map(p => `
+    grid.innerHTML = projectsToRender.map(p => `
       <a href="proje-detay.html?id=${p.id}" class="project-card">
         <img src="${p.image}" alt="${p.name}">
         <div class="project-body">
@@ -192,8 +200,29 @@
       </a>
     `).join('');
   }
-  
-  document.addEventListener('DOMContentLoaded', renderProjectsPage);
+
+
+  document.addEventListener('DOMContentLoaded', async () => {
+ 
+    allProjects = await getProjects();
+    
+    
+    renderProjects(allProjects);
+
+    
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+    
+      const filtered = allProjects.filter(project => 
+        project.name.toLowerCase().includes(searchTerm) || 
+        project.address.toLowerCase().includes(searchTerm)
+      );
+      
+      renderProjects(filtered);
+    });
+  });
 </script>
 </body>
 </html>
