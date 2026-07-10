@@ -42,7 +42,13 @@ function compressImage(file, callback) {
   
   reader.readAsDataURL(file);
 }
-
+function compressImagePromise(file) {
+  return new Promise((resolve) => {
+    compressImage(file, (base64) => {
+      resolve(base64);
+    });
+  });
+}
 // Admin panel DOM render et
 function renderAdminPanel() {
   const projects = getProjects();
@@ -73,13 +79,14 @@ function resetProjectForm() {
   document.getElementById('cancelBtn').style.display = 'none';
   document.getElementById('currentProjectId').value = '';
   document.getElementById('imagePreview').innerHTML = '';
+  document.getElementById('galleryPreview').innerHTML = ''; // Yeni satır
 }
+
 async function processGallery(files) {
+  if (!files || files.length === 0) return [];
   const gallery = [];
   for (let file of files) {
-    const base64 = await new Promise((resolve) => {
-      compressImage(file, resolve); // Mevcut compressImage fonksiyonunu kullanıyoruz
-    });
+    const base64 = await compressImagePromise(file);
     gallery.push(base64);
   }
   return gallery;
@@ -93,80 +100,57 @@ document.addEventListener('DOMContentLoaded', () => {
   
   projectForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-  
-  const files = document.getElementById('projectGallery').files;
-  const gallery = await processGallery(files); 
+    
+    // Form verilerini al
     const currentId = document.getElementById('currentProjectId').value;
     const name = document.getElementById('projectName').value;
     const year = document.getElementById('projectYear').value;
     const unitCount = document.getElementById('projectUnitCount').value;
     const address = document.getElementById('projectAddress').value;
     const description = document.getElementById('projectDescription').value;
-    const imageFile = document.getElementById('projectImage').files[0];
     
+    // Fotoğrafları al
+    const imageFile = document.getElementById('projectImage').files[0];
+    const galleryFiles = document.getElementById('projectGallery').files;
+
     if (!name || !year || !unitCount || !address) {
       alert('Lütfen tüm alanları doldurunuz!');
       return;
     }
-    
-    if (imageFile) {
-      compressImage(imageFile, (base64) => {
-        const projectData = {
-          name,
-          year: parseInt(year),
-          unitCount: parseInt(unitCount),
-          address,
-          description,
-          image: base64
-        };
-        
-        if (currentId) {
-          updateProject(parseInt(currentId), projectData);
-          alert('Proje güncellendi!');
-        } else {
-          addProject(projectData);
-          alert('Proje eklendi!');
-        }
-        
-        renderAdminPanel();
-        resetProjectForm();
-      });
-    } else if (!currentId) {
-      alert('Lütfen bir fotoğraf seçiniz!');
-    } else {
-      // Güncelleme ve fotoğraf yok = mevcut fotoğrafı koru
-      const projectData = {
-        name,
-        year: parseInt(year),
-        unitCount: parseInt(unitCount),
-        address,
-        description,
-        gallery: gallery
-      };
+
+    // Mevcut projeyi al (güncelleme ise)
+    let existingProject = currentId ? getProjectById(parseInt(currentId)) : null;
+
+    // Fotoğrafları işle
+    let coverImage = imageFile ? await compressImagePromise(imageFile) : (existingProject ? existingProject.image : null);
+    let gallery = galleryFiles.length > 0 ? await processGallery(galleryFiles) : (existingProject ? existingProject.gallery : []);
+
+    if (!coverImage && !currentId) {
+      alert('Lütfen bir kapak fotoğrafı seçiniz!');
+      return;
+    }
+
+    const projectData = {
+      name,
+      year: parseInt(year),
+      unitCount: parseInt(unitCount),
+      address,
+      description,
+      image: coverImage,
+      gallery: gallery // Galeri buraya eklendi
+    };
+
+    if (currentId) {
       updateProject(parseInt(currentId), projectData);
       alert('Proje güncellendi!');
-      renderAdminPanel();
-      resetProjectForm();
+    } else {
+      addProject(projectData);
+      alert('Proje eklendi!');
     }
+    
+    renderAdminPanel();
+    resetProjectForm();
   });
-  
-  // Fotoğraf preview
-  document.getElementById('projectImage').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        document.getElementById('imagePreview').innerHTML = `
-          <img src="${event.target.result}" alt="Önizleme" style="max-width: 200px; max-height: 200px; border-radius: 8px;">
-        `;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-  
-  // İlk render
-  renderAdminPanel();
-  resetProjectForm();
 });
 
 // Proje düzenle
