@@ -375,11 +375,12 @@
         <div class="meta-value">${project.unitCount}</div>
       </div>
     `;
-    if (project.gallery && project.gallery.length > 0) {
-  const galleryContainer = document.getElementById('projectGallery');
-  galleryContainer.innerHTML = project.gallery.map(imgSrc => `
+    const galleryContainer = document.getElementById('projectGallery');
+
+if (project.gallery && project.gallery.length > 0) {
+  galleryContainer.innerHTML = project.gallery.map(path => `
     <div class="gallery-item">
-      <img src="${imgSrc}" alt="${project.name} detay">
+      <img src="${path}" alt="${project.name} detay">
     </div>
   `).join('');
 }
